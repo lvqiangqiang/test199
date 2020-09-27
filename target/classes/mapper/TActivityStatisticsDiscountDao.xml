@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvqiang.dao.TActivityStatisticsDiscountDao">
+
+    <resultMap type="com.lvqiang.entity.TActivityStatisticsDiscount" id="TActivityStatisticsDiscountMap">
+        <result property="fpkid" column="Fpkid" jdbcType="INTEGER"/>
+        <result property="fspid" column="Fspid" jdbcType="VARCHAR"/>
+        <result property="fdate" column="Fdate" jdbcType="VARCHAR"/>
+        <result property="factivityId" column="Factivity_id" jdbcType="INTEGER"/>
+        <result property="factivityType" column="Factivity_type" jdbcType="VARCHAR"/>
+        <result property="foutMchId" column="Fout_mch_id" jdbcType="VARCHAR"/>
+        <result property="foutStoreId" column="Fout_store_id" jdbcType="VARCHAR"/>
+        <result property="ftotalOrderNum" column="Ftotal_order_num" jdbcType="INTEGER"/>
+        <result property="forderNum" column="Forder_num" jdbcType="INTEGER"/>
+        <result property="forderAmt" column="Forder_amt" jdbcType="OTHER"/>
+        <result property="fpayAmt" column="Fpay_amt" jdbcType="OTHER"/>
+        <result property="fdiscountAmt" column="Fdiscount_amt" jdbcType="OTHER"/>
+        <result property="fdeductionPoint" column="Fdeduction_point" jdbcType="INTEGER"/>
+        <result property="fstate" column="Fstate" jdbcType="INTEGER"/>
+        <result property="flstate" column="Flstate" jdbcType="INTEGER"/>
+        <result property="fcreateTime" column="Fcreate_time" jdbcType="TIMESTAMP"/>
+        <result property="fmodifyTime" column="Fmodify_time" jdbcType="TIMESTAMP"/>
+        <result property="fmemo" column="Fmemo" jdbcType="VARCHAR"/>
+        <result property="fstandby1" column="Fstandby1" jdbcType="INTEGER"/>
+        <result property="fstandby2" column="Fstandby2" jdbcType="INTEGER"/>
+        <result property="fstandby3" column="Fstandby3" jdbcType="TIMESTAMP"/>
+        <result property="fstandby4" column="Fstandby4" jdbcType="TIMESTAMP"/>
+        <result property="fstandby5" column="Fstandby5" jdbcType="OTHER"/>
+        <result property="fstandby6" column="Fstandby6" jdbcType="OTHER"/>
+        <result property="fstandby7" column="Fstandby7" jdbcType="VARCHAR"/>
+        <result property="fstandby8" column="Fstandby8" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TActivityStatisticsDiscountMap">
+        select
+          Fpkid, Fspid, Fdate, Factivity_id, Factivity_type, Fout_mch_id, Fout_store_id, Ftotal_order_num, Forder_num, Forder_amt, Fpay_amt, Fdiscount_amt, Fdeduction_point, Fstate, Flstate, Fcreate_time, Fmodify_time, Fmemo, Fstandby1, Fstandby2, Fstandby3, Fstandby4, Fstandby5, Fstandby6, Fstandby7, Fstandby8
+        from eppcm_db.t_activity_statistics_discount
+        where Fpkid = #{fpkid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TActivityStatisticsDiscountMap">
+        select
+          Fpkid, Fspid, Fdate, Factivity_id, Factivity_type, Fout_mch_id, Fout_store_id, Ftotal_order_num, Forder_num, Forder_amt, Fpay_amt, Fdiscount_amt, Fdeduction_point, Fstate, Flstate, Fcreate_time, Fmodify_time, Fmemo, Fstandby1, Fstandby2, Fstandby3, Fstandby4, Fstandby5, Fstandby6, Fstandby7, Fstandby8
+        from eppcm_db.t_activity_statistics_discount
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TActivityStatisticsDiscountMap">
+        select
+        Fpkid, Fspid, Fdate, Factivity_id, Factivity_type, Fout_mch_id, Fout_store_id, Ftotal_order_num, Forder_num,
+        Forder_amt, Fpay_amt, Fdiscount_amt, Fdeduction_point, Fstate, Flstate, Fcreate_time, Fmodify_time, Fmemo,
+        Fstandby1, Fstandby2, Fstandby3, Fstandby4, Fstandby5, Fstandby6, Fstandby7, Fstandby8
+        from eppcm_db.t_activity_statistics_discount
+        <where>
+            <if test="fpkid != null">
+                and Fpkid = #{fpkid}
+            </if>
+            <if test="fspid != null and fspid != ''">
+                and Fspid = #{fspid}
+            </if>
+            <if test="fdate != null and fdate != ''">
+                and Fdate = #{fdate}
+            </if>
+            <if test="factivityId != null">
+                and Factivity_id = #{factivityId}
+            </if>
+            <if test="factivityType != null and factivityType != ''">
+                and Factivity_type = #{factivityType}
+            </if>
+            <if test="foutMchId != null and foutMchId != ''">
+                and Fout_mch_id = #{foutMchId}
+            </if>
+            <if test="foutStoreId != null and foutStoreId != ''">
+                and Fout_store_id = #{foutStoreId}
+            </if>
+            <if test="ftotalOrderNum != null">
+                and Ftotal_order_num = #{ftotalOrderNum}
+            </if>
+            <if test="forderNum != null">
+                and Forder_num = #{forderNum}
+            </if>
+            <if test="forderAmt != null">
+                and Forder_amt = #{forderAmt}
+            </if>
+            <if test="fpayAmt != null">
+                and Fpay_amt = #{fpayAmt}
+            </if>
+            <if test="fdiscountAmt != null">
+                and Fdiscount_amt = #{fdiscountAmt}
+            </if>
+            <if test="fdeductionPoint != null">
+                and Fdeduction_point = #{fdeductionPoint}
+            </if>
+            <if test="fstate != null">
+                and Fstate = #{fstate}
+            </if>
+            <if test="flstate != null">
+                and Flstate = #{flstate}
+            </if>
+            <if test="fcreateTime != null">
+                and Fcreate_time = #{fcreateTime}
+            </if>
+            <if test="fmodifyTime != null">
+                and Fmodify_time = #{fmodifyTime}
+            </if>
+            <if test="fmemo != null and fmemo != ''">
+                and Fmemo = #{fmemo}
+            </if>
+            <if test="fstandby1 != null">
+                and Fstandby1 = #{fstandby1}
+            </if>
+            <if test="fstandby2 != null">
+                and Fstandby2 = #{fstandby2}
+            </if>
+            <if test="fstandby3 != null">
+                and Fstandby3 = #{fstandby3}
+            </if>
+            <if test="fstandby4 != null">
+                and Fstandby4 = #{fstandby4}
+            </if>
+            <if test="fstandby5 != null">
+                and Fstandby5 = #{fstandby5}
+            </if>
+            <if test="fstandby6 != null">
+                and Fstandby6 = #{fstandby6}
+            </if>
+            <if test="fstandby7 != null and fstandby7 != ''">
+                and Fstandby7 = #{fstandby7}
+            </if>
+            <if test="fstandby8 != null and fstandby8 != ''">
+                and Fstandby8 = #{fstandby8}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="fpkid" useGeneratedKeys="true">
+        insert into eppcm_db.t_activity_statistics_discount(Fspid, Fdate, Factivity_id, Factivity_type, Fout_mch_id, Fout_store_id, Ftotal_order_num, Forder_num, Forder_amt, Fpay_amt, Fdiscount_amt, Fdeduction_point, Fstate, Flstate, Fcreate_time, Fmodify_time, Fmemo, Fstandby1, Fstandby2, Fstandby3, Fstandby4, Fstandby5, Fstandby6, Fstandby7, Fstandby8)
+        values (#{fspid}, #{fdate}, #{factivityId}, #{factivityType}, #{foutMchId}, #{foutStoreId}, #{ftotalOrderNum}, #{forderNum}, #{forderAmt}, #{fpayAmt}, #{fdiscountAmt}, #{fdeductionPoint}, #{fstate}, #{flstate}, #{fcreateTime}, #{fmodifyTime}, #{fmemo}, #{fstandby1}, #{fstandby2}, #{fstandby3}, #{fstandby4}, #{fstandby5}, #{fstandby6}, #{fstandby7}, #{fstandby8})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update eppcm_db.t_activity_statistics_discount
+        <set>
+            <if test="fspid != null and fspid != ''">
+                Fspid = #{fspid},
+            </if>
+            <if test="fdate != null and fdate != ''">
+                Fdate = #{fdate},
+            </if>
+            <if test="factivityId != null">
+                Factivity_id = #{factivityId},
+            </if>
+            <if test="factivityType != null and factivityType != ''">
+                Factivity_type = #{factivityType},
+            </if>
+            <if test="foutMchId != null and foutMchId != ''">
+                Fout_mch_id = #{foutMchId},
+            </if>
+            <if test="foutStoreId != null and foutStoreId != ''">
+                Fout_store_id = #{foutStoreId},
+            </if>
+            <if test="ftotalOrderNum != null">
+                Ftotal_order_num = #{ftotalOrderNum},
+            </if>
+            <if test="forderNum != null">
+                Forder_num = #{forderNum},
+            </if>
+            <if test="forderAmt != null">
+                Forder_amt = #{forderAmt},
+            </if>
+            <if test="fpayAmt != null">
+                Fpay_amt = #{fpayAmt},
+            </if>
+            <if test="fdiscountAmt != null">
+                Fdiscount_amt = #{fdiscountAmt},
+            </if>
+            <if test="fdeductionPoint != null">
+                Fdeduction_point = #{fdeductionPoint},
+            </if>
+            <if test="fstate != null">
+                Fstate = #{fstate},
+            </if>
+            <if test="flstate != null">
+                Flstate = #{flstate},
+            </if>
+            <if test="fcreateTime != null">
+                Fcreate_time = #{fcreateTime},
+            </if>
+            <if test="fmodifyTime != null">
+                Fmodify_time = #{fmodifyTime},
+            </if>
+            <if test="fmemo != null and fmemo != ''">
+                Fmemo = #{fmemo},
+            </if>
+            <if test="fstandby1 != null">
+                Fstandby1 = #{fstandby1},
+            </if>
+            <if test="fstandby2 != null">
+                Fstandby2 = #{fstandby2},
+            </if>
+            <if test="fstandby3 != null">
+                Fstandby3 = #{fstandby3},
+            </if>
+            <if test="fstandby4 != null">
+                Fstandby4 = #{fstandby4},
+            </if>
+            <if test="fstandby5 != null">
+                Fstandby5 = #{fstandby5},
+            </if>
+            <if test="fstandby6 != null">
+                Fstandby6 = #{fstandby6},
+            </if>
+            <if test="fstandby7 != null and fstandby7 != ''">
+                Fstandby7 = #{fstandby7},
+            </if>
+            <if test="fstandby8 != null and fstandby8 != ''">
+                Fstandby8 = #{fstandby8},
+            </if>
+        </set>
+        where Fpkid = #{fpkid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from eppcm_db.t_activity_statistics_discount where Fpkid = #{fpkid}
+    </delete>
+
+</mapper>
