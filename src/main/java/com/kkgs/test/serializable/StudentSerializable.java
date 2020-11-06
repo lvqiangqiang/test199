@@ -30,5 +30,6 @@ public class StudentSerializable implements Serializable{
         if (age < 0 || age > 100){
             throw new IllegalArgumentException("年龄必须在0到100之间！！！");
         }
+        //test
     }
 }
